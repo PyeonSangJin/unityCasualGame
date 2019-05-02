@@ -20,6 +20,7 @@ public class ItemSpawn : MonoBehaviour
           {0,0,0,0,0,0,1,1,1,1,0,0,0,1,1,2,2,2,2,2,2,2 },
           {0,0,0,0,0,1,1,1,1,0,0,0,0,1,1,2,2,1,1,1,1,2 }
    };
+    private bool isin = true;
 
 
     public void cal()
@@ -42,7 +43,18 @@ public class ItemSpawn : MonoBehaviour
         cube = Resources.Load<GameObject>("white");
     }
 
-    void Update()
+
+    IEnumerator SpawnCoroutine(int x, int y)
+    {
+        Vector3 vector3 = new Vector3((float)mappos[x, y, 0], (float)mappos[x, y, 1], 0);
+
+        GameObject spawnCube = Instantiate(cube, vector3, Quaternion.identity);
+        yield return new WaitForSeconds(5f); //1초동안 대기
+        isin = true;
+    }
+
+
+        void Update()
     {
         //if (!isLocalPlayer) return;
 
@@ -53,9 +65,11 @@ public class ItemSpawn : MonoBehaviour
         
         if (map[y, x] != 0)
         {
-            Vector3 vector3 = new Vector3((float)mappos[x, y, 0], (float)mappos[x, y, 1], 0);
-
-            GameObject spawnCube = Instantiate(cube, vector3, Quaternion.identity);
+            if (isin)
+            {
+                isin = false;
+                StartCoroutine(SpawnCoroutine(x, y));
+            }
         }
     }
 
