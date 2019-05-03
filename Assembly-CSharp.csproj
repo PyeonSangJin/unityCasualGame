@@ -171,6 +171,7 @@
     <Compile Include="Assets\Photon\PhotonUnityNetworking\Demos\Shared Assets\Scripts\DocLinks.cs" />
     <Compile Include="Assets\Scripts\changeText.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
+    <Compile Include="Assets\Scripts\CharacterManager.cs" />
     <Compile Include="Assets\Scripts\CharacterStatus.cs" />
     <Compile Include="Assets\Scripts\ItemSpawn.cs" />
     <Compile Include="Assets\Scripts\spawnTrigger.cs" />

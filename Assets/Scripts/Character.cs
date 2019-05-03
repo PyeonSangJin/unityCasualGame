@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class Character :MonoBehaviour
+public class Character : MonoBehaviourPun
 {
     public float speed = 5.0f;
     private Vector3 vector;
@@ -93,6 +94,11 @@ public class Character :MonoBehaviour
 
     void Update()
     {
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        {
+            return;
+        }
+
         if (canMove) {
             if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
             {

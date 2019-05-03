@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class CharacterStatus : MonoBehaviour
+public class CharacterStatus : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public const float maxHealth = 100;
+    public const float maxHealth = 100f;
 
     //동기화 변수 값변경시 자동으로 동기화(int, float만 가능)24개까지
     //hook는 해당 변수 값이 변경시 함수 호출
@@ -13,7 +14,20 @@ public class CharacterStatus : MonoBehaviour
     public float currentHealth;
 
     public Slider hpBar;
-//    private NetworkStartPosition[] spawnPoints;
+    //    private NetworkStartPosition[] spawnPoints;
+
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(currentHealth);
+        }
+        else
+        {
+            this.currentHealth = (float)stream.ReceiveNext();
+        }
+    }
 
 
     private void Awake()
@@ -24,6 +38,21 @@ public class CharacterStatus : MonoBehaviour
  //       }
     }
 
+    void Update()
+    {
+        //ProcessInputs();
+        // trigger Beams active state
+        //if (beams != null && IsFiring != beams.activeSelf)
+        //{
+        //    beams.SetActive(IsFiring);
+        //}
+        if (currentHealth <= 0f)
+        {
+            GameManager.Instance.LeaveRoom();
+        }
+    }
+
+
     void OnChangeHealth(float currentHealth)
     {
         hpBar.value = currentHealth / maxHealth;
@@ -33,26 +62,31 @@ public class CharacterStatus : MonoBehaviour
     //   [ServerCallback]
     public void TakeDamage(int amount)
     {
-   //     if (!isServer) return;
+        if (!photonView.IsMine) return;
 
-        currentHealth -= amount;
+        currentHealth -= amount * Time.deltaTime;
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
     //        RpcRespawn();
         }
+
     }
 
     //   [ServerCallback]
     public void AddHealth(int amount)
     {
-  //      if (!isServer) return;
+        if (!photonView.IsMine) return;
 
-        currentHealth += amount;
+        currentHealth += amount * Time.deltaTime;
+
+
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
         }
+
     }
 
     private void FixedUpdate()
