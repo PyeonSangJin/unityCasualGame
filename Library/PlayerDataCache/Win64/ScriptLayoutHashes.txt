@@ -109,7 +109,7 @@ abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.Tou
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 267e1e00a8f1d106bd614339db235595 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.PunCockpit
 57068c697717dd51af9abb23157cd794 Assembly-CSharp.dll:Photon.Realtime.Demo.ConnectAndJoinRandomLb
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ItemSpawn
+ea84a8c53f823326044a999315931eee Assembly-CSharp.dll:.ItemSpawn
 ba160f8fe96116c81151a9a24d7d9f4f Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.RoomListCell
 c87a2744a4fec8052f557862b102c4e4 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.FriendListCell
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:Photon.Pun.Demo.Procedural.IngameControlPanel
@@ -131,7 +131,7 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.G
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 cba6cca6bb3290c4c00d709cf63843db Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.SendRateOnSerializeField
-0982807d60fb3884d51d4baa9fdc156c Assembly-CSharp.dll:.Launcher
+cbe412513707a5abbf0bc8f22eb58864 Assembly-CSharp.dll:.Launcher
 9d65954b754eaf4accff343c2e40aec1 PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.TabViewManager
 00274a21279f5cb831ce20f895049e38 Unity.TextMeshPro.dll:TMPro.TMP_SubMeshUI
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.PlayerNameInputField
@@ -308,4 +308,3 @@ c8283c7732e3b6aa70d28f1fed4430ca PhotonUnityNetworking.Utilities.dll:Photon.Pun.
 f07d654754d37f82934d9057c671e9cc Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.Forms.UserIdUiForm
 c656dcc13ae391b68d594cc8f9c590b0 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.CountOfRoomsProperty
 f0c4eb24258257daca58a9939f0894d2 Assembly-CSharp.dll:Photon.Pun.Demo.Asteroids.LobbyTopPanel
-7d3bfa72ab7073e03c27fa9ec61a96b8 Assembly-CSharp.dll:.CharacterManager

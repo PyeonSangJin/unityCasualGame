@@ -34,5 +34,7 @@ MonoBehaviour:
   - RespawnSpaceship
   - AddHealth
   - TakeDamage
+  - CmdDestroyItem
+  - FixedUpdate
   DisableAutoOpenWizard: 1
   ShowSettings: 0

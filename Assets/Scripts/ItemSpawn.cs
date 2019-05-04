@@ -47,7 +47,6 @@ public class ItemSpawn : MonoBehaviourPun
 
     void Update()
     {
-        Debug.Log(PhotonNetwork.IsMasterClient);
         if (!PhotonNetwork.IsMasterClient) return;
         CmdItemSpawn();
     }
