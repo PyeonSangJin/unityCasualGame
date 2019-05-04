@@ -7,11 +7,7 @@ using Photon.Pun;
 public class CharacterStatus : MonoBehaviourPunCallbacks, IPunObservable
 {
     public const float maxHealth = 100f;
-
-    //동기화 변수 값변경시 자동으로 동기화(int, float만 가능)24개까지
-    //hook는 해당 변수 값이 변경시 함수 호출
-    //[SyncVar(hook = "OnChangeHealth")]
-    public float currentHealth;
+    public float currentHealth = 50f;
 
     public Slider hpBar;
     //    private NetworkStartPosition[] spawnPoints;
@@ -40,12 +36,6 @@ public class CharacterStatus : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        //ProcessInputs();
-        // trigger Beams active state
-        //if (beams != null && IsFiring != beams.activeSelf)
-        //{
-        //    beams.SetActive(IsFiring);
-        //}
         if (currentHealth <= 0f)
         {
             GameManager.Instance.LeaveRoom();
@@ -59,12 +49,13 @@ public class CharacterStatus : MonoBehaviourPunCallbacks, IPunObservable
     }
 
 
-    //   [ServerCallback]
+    [PunRPC]
     public void TakeDamage(int amount)
     {
         if (!photonView.IsMine) return;
-
-        currentHealth -= amount * Time.deltaTime;
+        
+        //deltatime 하면 이상해짐
+        currentHealth -= amount;
 
         if (currentHealth <= 0)
         {
@@ -74,14 +65,14 @@ public class CharacterStatus : MonoBehaviourPunCallbacks, IPunObservable
 
     }
 
-    //   [ServerCallback]
+    [PunRPC]
     public void AddHealth(int amount)
     {
         if (!photonView.IsMine) return;
 
-        currentHealth += amount * Time.deltaTime;
-
-
+        //deltatime 하면 이상해짐
+        currentHealth += amount;
+        
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;

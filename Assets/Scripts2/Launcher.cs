@@ -5,6 +5,7 @@ using Photon.Realtime;
 public class Launcher : MonoBehaviourPunCallbacks
 {
     string gameVersion = "1";
+    public string userId = "test01";
 
     [SerializeField]
     private byte maxPlayersPerRoom = 4;
@@ -23,7 +24,6 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     void Start()
     {
-
         progressLabel.SetActive(false);
         controlPanel.SetActive(true);
     }
@@ -42,7 +42,9 @@ public class Launcher : MonoBehaviourPunCallbacks
         }
         else
         {
-            PhotonNetwork.GameVersion = gameVersion;
+            PhotonNetwork.GameVersion = this.gameVersion;
+            PhotonNetwork.NickName = userId;
+
             PhotonNetwork.ConnectUsingSettings();
         }
     }
@@ -51,7 +53,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         if (isConnecting)
         {
-            Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN");
+            Debug.Log("Connect To Master");
             PhotonNetwork.JoinRandomRoom();
         }
     }
@@ -62,29 +64,20 @@ public class Launcher : MonoBehaviourPunCallbacks
         progressLabel.SetActive(false);
         controlPanel.SetActive(true);
 
-        Debug.LogWarningFormat("PUN Basics Tutorial/Launcher: OnDisconnected() was called by PUN with reason {0}", cause);
+        Debug.LogWarningFormat("OnDisconnected() was called by PUN with reason {0}", cause);
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log("PUN Basics Tutorial/Launcher:OnJoinRandomFailed() was called by PUN. No random room available, so we create one.\nCalling: PhotonNetwork.CreateRoom");
-
+        Debug.Log("Failed Join Room!!!");
 
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
     }
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("PUN Basics Tutorial/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
+        Debug.Log("Joined Room!!!");
 
-        if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
-        {
-            Debug.Log("We load the 'Room for 1' ");
-
-
-            // #Critical
-            // Load the Room Level.
-            PhotonNetwork.LoadLevel("gameScene");
-        }
+        PhotonNetwork.LoadLevel("gameScene");
     }
 }

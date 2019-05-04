@@ -1,31 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class spawnTrigger : MonoBehaviour
+public class spawnTrigger : MonoBehaviourPun
 {
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D Item)
     {
-        if (other.CompareTag("white"))
+        if (Item.CompareTag("white"))
         {
-            Debug.Log(other.ToString());
-            CmdDestroyOther(other.gameObject);
+            Debug.Log(Item.ToString());
+            CmdDestroyItem(Item.gameObject);
         }
     }
 
     
-    void CmdDestroyOther(GameObject other)
+    void CmdDestroyItem(GameObject item)
     {
-       // NetworkServer.Destroy(cube);
-
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
         foreach (GameObject player in players)
         {
+            Debug.Log(player);
             if (player == this.gameObject) player.GetComponent<CharacterStatus>().AddHealth(10);
             else player.GetComponent<CharacterStatus>().TakeDamage(10);
         }
 
-        Destroy(other);
+        if (PhotonNetwork.IsMasterClient)
+            PhotonNetwork.Destroy(item);
     }
 }

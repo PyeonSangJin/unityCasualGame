@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Photon.Pun;
 
-public class ItemSpawn : MonoBehaviour
+public class ItemSpawn : MonoBehaviourPun
 {
+    private GameObject item;
+    public float spawnTime = 5f;
+
     double[,,] mappos = new double[22, 12, 2];
     int[,] map = {
           {2,2,2,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0 },
@@ -35,34 +39,24 @@ public class ItemSpawn : MonoBehaviour
         }
     }
 
-    private GameObject cube;
-
     void Awake()
     {
         cal();
-        cube = Resources.Load<GameObject>("white");
+        item = Resources.Load<GameObject>("white");
     }
 
-
-    IEnumerator SpawnCoroutine(int x, int y)
+    void Update()
     {
-        Vector3 vector3 = new Vector3((float)mappos[x, y, 0], (float)mappos[x, y, 1], 0);
-
-        GameObject spawnCube = Instantiate(cube, vector3, Quaternion.identity);
-        yield return new WaitForSeconds(5f); //1초동안 대기
-        isin = true;
+        Debug.Log(PhotonNetwork.IsMasterClient);
+        if (!PhotonNetwork.IsMasterClient) return;
+        CmdItemSpawn();
     }
 
-
-        void Update()
+    void CmdItemSpawn()
     {
-        //if (!isLocalPlayer) return;
-
-        if (Input.GetKeyDown(KeyCode.Space)) CmdCubeSpawn();
         int x = Random.Range(0, 22);
         int y = Random.Range(0, 12);
-      
-        
+
         if (map[y, x] != 0)
         {
             if (isin)
@@ -73,10 +67,12 @@ public class ItemSpawn : MonoBehaviour
         }
     }
 
-    void CmdCubeSpawn()
+    IEnumerator SpawnCoroutine(int x, int y)
     {
+        Vector3 vector3 = new Vector3((float)mappos[x, y, 0], (float)mappos[x, y, 1], 0);
 
-        //NetworkServer.Spawn(spawnCube);
+        GameObject spawnCube = PhotonNetwork.Instantiate(item.name, vector3, Quaternion.identity);
+        yield return new WaitForSeconds(spawnTime);
+        isin = true;
     }
-
 }
