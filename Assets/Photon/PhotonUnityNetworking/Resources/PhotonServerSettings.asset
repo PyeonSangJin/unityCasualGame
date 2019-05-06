@@ -36,5 +36,7 @@ MonoBehaviour:
   - TakeDamage
   - CmdDestroyItem
   - FixedUpdate
+  - OnChangeHealth
+  - OnTriggerEnter2D
   DisableAutoOpenWizard: 1
   ShowSettings: 0

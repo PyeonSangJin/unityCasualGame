@@ -387,10 +387,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6280758151916039234}
     m_Modifications:
+    - target: {fileID: 1803339922505141326, guid: 5f9fb6c400d53074a9b10edcec707678,
+        type: 3}
+      propertyPath: m_Name
+      value: Slider
+      objectReference: {fileID: 0}
     - target: {fileID: 1803339922505141323, guid: 5f9fb6c400d53074a9b10edcec707678,
         type: 3}
       propertyPath: m_Value
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803339922526056974, guid: 5f9fb6c400d53074a9b10edcec707678,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803339922526056974, guid: 5f9fb6c400d53074a9b10edcec707678,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1803339922505141321, guid: 5f9fb6c400d53074a9b10edcec707678,
         type: 3}
@@ -506,21 +521,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1803339922505141326, guid: 5f9fb6c400d53074a9b10edcec707678,
-        type: 3}
-      propertyPath: m_Name
-      value: Slider
-      objectReference: {fileID: 0}
-    - target: {fileID: 1803339922526056974, guid: 5f9fb6c400d53074a9b10edcec707678,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1803339922526056974, guid: 5f9fb6c400d53074a9b10edcec707678,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f9fb6c400d53074a9b10edcec707678, type: 3}

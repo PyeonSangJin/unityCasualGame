@@ -5,7 +5,6 @@ using Photon.Pun;
 
 public class spawnTrigger : MonoBehaviourPun
 {
-
     void OnTriggerEnter2D(Collider2D Item)
     {
         if (Item.CompareTag("white"))
@@ -15,20 +14,18 @@ public class spawnTrigger : MonoBehaviourPun
     }
     
 
-
     void CmdDestroyItem(GameObject item)
     {
+
+
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        
         foreach (GameObject player in players)
         {
-            Debug.Log(players);
             if (player == this.gameObject) player.GetComponent<CharacterStatus>().AddHealth(10);
             else player.GetComponent<CharacterStatus>().TakeDamage(10);
         }
 
-        if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.Destroy(item);
-
+        PhotonNetwork.Destroy(item);
+        Destroy(item);
     }
 }
