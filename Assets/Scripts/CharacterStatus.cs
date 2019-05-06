@@ -7,28 +7,27 @@ using Photon.Pun;
 public class CharacterStatus : MonoBehaviourPun//, IPunObservable
 {
     public const float maxHealth = 100f;
-    public float currentHealth = 50f;
-
+    public float health = 50f;
     public Slider hpBar;
 
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    //{
-    //    if (stream.IsWriting)
-    //    {
-    //        stream.SendNext(this.currentHealth);
-    //    }
-    //    else
-    //    {
-    //        this.currentHealth = (float)stream.ReceiveNext();
-    //    }
-    //}
-
-    void Update()
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        OnChangeHealth(currentHealth);
+        if (stream.IsWriting)
+        {
+            stream.SendNext(health);
+        }
+        else
+        {
+            health = (float)stream.ReceiveNext();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        OnChangeHealth(health);
 
         if (!photonView.IsMine) return;
-        if (currentHealth <= 0f)
+        if (health <= 0f)
         {
             GameManager.Instance.LeaveRoom();
         }
@@ -38,28 +37,28 @@ public class CharacterStatus : MonoBehaviourPun//, IPunObservable
     {
         hpBar.value = currentHealth / maxHealth;
     }
-    
-    public void TakeDamage(int amount)
-    {  
-        //deltatime 하면 이상해짐
-        currentHealth -= amount;
 
-        if (currentHealth <= 0)
+
+    //deltatime 하면 이상해짐
+    [PunRPC]
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+
+        if (health <= 0)
         {
-            currentHealth = 0;
+            health = 0;
         }
     }
     
+    [PunRPC]
     public void AddHealth(int amount)
     {
-        //deltatime 하면 이상해짐
-        currentHealth += amount;
+        health += amount;
         
-        if (currentHealth > maxHealth)
+        if (health > maxHealth)
         {
-            currentHealth = maxHealth;
+            health = maxHealth;
         }
     }
-
-
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class spawnTrigger : MonoBehaviourPun
+public class ItemTrigger : MonoBehaviourPun
 {
     void OnTriggerEnter2D(Collider2D Item)
     {
@@ -16,16 +16,16 @@ public class spawnTrigger : MonoBehaviourPun
 
     void CmdDestroyItem(GameObject item)
     {
-
+        PhotonNetwork.Destroy(item);
+       // Destroy(item);
 
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject player in players)
         {
-            if (player == this.gameObject) player.GetComponent<CharacterStatus>().AddHealth(10);
-            else player.GetComponent<CharacterStatus>().TakeDamage(10);
+            if (player == this.gameObject) player.GetComponent<CharacterStatus>().photonView.RPC("AddHealth", RpcTarget.All,10);
+            else player.GetComponent<CharacterStatus>().photonView.RPC("TakeDamage", RpcTarget.All, 10);
         }
 
-        PhotonNetwork.Destroy(item);
-        Destroy(item);
+        
     }
 }

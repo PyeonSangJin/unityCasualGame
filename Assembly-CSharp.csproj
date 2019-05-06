@@ -173,7 +173,7 @@
     <Compile Include="Assets\Scripts\Character.cs" />
     <Compile Include="Assets\Scripts\CharacterStatus.cs" />
     <Compile Include="Assets\Scripts\ItemSpawn.cs" />
-    <Compile Include="Assets\Scripts\spawnTrigger.cs" />
+    <Compile Include="Assets\Scripts\ItemTrigger.cs" />
     <Compile Include="Assets\Scripts\WaterTiles.cs" />
     <Compile Include="Assets\Scripts2\GameManager.cs" />
     <Compile Include="Assets\Scripts2\Launcher.cs" />
