@@ -20,12 +20,7 @@ public class WaterTiles : TileBase
     {
         return base.StartUp(position, tilemap, go);
     }
-
-    /// <summary>
-    /// Refreshes this tile when something changes
-    /// </summary>
-    /// <param name="position">The tiles position in the grid</param>
-    /// <param name="tilemap">A reference to the tilemap that this tile belongs to.</param>
+    
     public override void RefreshTile(Vector3Int position, ITilemap tilemap)
     {
 
@@ -45,13 +40,7 @@ public class WaterTiles : TileBase
 
 
     }
-
-    /// <summary>
-    /// Changes the tiles sprite to the correct sprites based on the situation
-    /// </summary>
-    /// <param name="location">The location of this sprite</param>
-    /// <param name="tilemap">A reference to the tilemap, that this tile belongs to</param>
-    /// <param name="tileData">A reference to the actual object, that this tile belongs to</param>
+    
     public override void GetTileData(Vector3Int location, ITilemap tilemap, ref TileData tileData)
     {
 

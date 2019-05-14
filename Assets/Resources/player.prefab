@@ -11,15 +11,14 @@ GameObject:
   - component: {fileID: 2707900781835159036}
   - component: {fileID: 2707900781835159037}
   - component: {fileID: 2707900781835159034}
-  - component: {fileID: 2707900781835158982}
-  - component: {fileID: 2707900781835158983}
   - component: {fileID: 2707900781835158980}
-  - component: {fileID: 2707900781835158979}
-  - component: {fileID: 2707900781835158978}
+  - component: {fileID: 2707900781835158983}
+  - component: {fileID: 2707900781835158982}
   - component: {fileID: 2707900781835158981}
   - component: {fileID: 2707900781835159033}
   - component: {fileID: 2707900781835159032}
   - component: {fileID: 2707900781835159035}
+  - component: {fileID: 7146555898284338767}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -109,24 +108,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2707900781835158982
-MonoBehaviour:
+--- !u!50 &2707900781835158980
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2707900781835158976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f1eed6a247bc1940a459434a2cdb152, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 4.5
-  runSpeed: 5
-  walkCount: 2
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &2707900781835158983
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -153,28 +155,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4923206, y: 0.43933082}
   m_EdgeRadius: 0
---- !u!50 &2707900781835158980
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2707900781835158976}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &2707900781835158979
+--- !u!114 &2707900781835158982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,42 +164,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2707900781835158976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f1eed6a247bc1940a459434a2cdb152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 1
-    SynchronizeType: 0
-    Name: Blend
-  - Type: 1
-    SynchronizeType: 1
-    Name: DirX
-  - Type: 1
-    SynchronizeType: 1
-    Name: DirY
-  - Type: 4
-    SynchronizeType: 1
-    Name: Walking
-  m_SynchronizeLayers:
-  - SynchronizeType: 0
-    LayerIndex: 0
---- !u!114 &2707900781835158978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2707900781835158976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
+  speed: 4.5
+  runSpeed: 5
+  walkCount: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &2707900781835158981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,11 +188,10 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 2707900781835158978}
-  - {fileID: 2707900781835158979}
+  - {fileID: 7146555898284338767}
   viewIdField: 0
   InstantiationId: 1
   isRuntimeInstantiated: 0
@@ -281,6 +234,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTime: 5
+--- !u!114 &7146555898284338767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707900781835158976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5896fc92be528524186b103819757981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5927628080454929357
 GameObject:
   m_ObjectHideFlags: 0

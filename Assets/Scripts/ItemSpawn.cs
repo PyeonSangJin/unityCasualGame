@@ -71,7 +71,8 @@ public class ItemSpawn : MonoBehaviourPun
         Vector3 vector3 = new Vector3((float)mappos[x, y, 0], (float)mappos[x, y, 1], 0);
 
         //GameObject spawnCube = PhotonNetwork.Instantiate(item.name, vector3, Quaternion.identity);
-        PhotonNetwork.Instantiate(item.name, vector3, Quaternion.identity);
+        PhotonNetwork.Instantiate(item.name, vector3, Quaternion.identity, 0);
+
 
         yield return new WaitForSeconds(spawnTime);
         isin = true;

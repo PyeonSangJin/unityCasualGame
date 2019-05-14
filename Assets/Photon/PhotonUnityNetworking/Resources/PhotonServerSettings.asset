@@ -38,5 +38,6 @@ MonoBehaviour:
   - FixedUpdate
   - OnChangeHealth
   - OnTriggerEnter2D
+  - networkDestory
   DisableAutoOpenWizard: 1
   ShowSettings: 0
