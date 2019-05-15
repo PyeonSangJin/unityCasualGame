@@ -5,47 +5,37 @@ using Photon.Pun;
 
 public class ItemTrigger : MonoBehaviourPun
 {
-
+    GameObject obj;
+    private int faraway = -1;
 
     void OnTriggerEnter2D(Collider2D Item)
     {
-        if (Item.CompareTag("white"))
+        if (Item.CompareTag("white") && faraway != Item.GetInstanceID())
         {
-            Debug.Log(photonView.InstantiationId);
-            CmdDestroyItem(Item.gameObject);
+            faraway = Item.GetInstanceID();
+
+            obj = Item.gameObject;
+            CmdDestroyItem(obj);
         }
     }
-
-    //클라이언트에서 피 주르륵 다르는거 잡아야함
+    
     void CmdDestroyItem(GameObject item)
     {
+        photonView.RPC("destroy", RpcTarget.All, null);
 
+        if (!PhotonNetwork.IsMasterClient) return;
 
-
-        // if(photonView.IsMine)
-        if (photonView.InstantiationId == 0)
-            Destroy(item);
-        else
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
         {
-            if (PhotonNetwork.IsMasterClient)
-                PhotonNetwork.Destroy(item);
+            if (player == this.gameObject) player.GetComponent<CharacterStatus>().photonView.RPC("AddHealth", RpcTarget.All, 10);
+            else player.GetComponent<CharacterStatus>().photonView.RPC("TakeDamage", RpcTarget.All, 10);
         }
-        if( item == null) {
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            foreach (GameObject player in players)
-            {
-                if (player == this.gameObject) player.GetComponent<CharacterStatus>().photonView.RPC("AddHealth", RpcTarget.All, 10);
-                else player.GetComponent<CharacterStatus>().photonView.RPC("TakeDamage", RpcTarget.All, 10);
-            }
-        }
-
-
-
-
-
     }
 
-
-
-
+    [PunRPC]
+    void destroy()
+    {
+        Destroy(obj);
+    }
 }

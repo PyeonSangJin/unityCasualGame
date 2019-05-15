@@ -39,5 +39,7 @@ MonoBehaviour:
   - OnChangeHealth
   - OnTriggerEnter2D
   - networkDestory
+  - spawn
+  - destroy
   DisableAutoOpenWizard: 1
   ShowSettings: 0

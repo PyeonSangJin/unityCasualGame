@@ -604,7 +604,7 @@ Tilemap:
   - first: {x: -9, y: -4, z: 0}
     second:
       m_TileIndex: 2
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 13
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -2458,7 +2458,7 @@ Tilemap:
   - first: {x: -1, y: 5, z: 0}
     second:
       m_TileIndex: 2
-      m_TileSpriteIndex: 13
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -3051,12 +3051,32 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1089155406}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1089155408}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f92653dbf364c140a2c4e53bb91ffc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1089155408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4387157514545431453, guid: 9be0dd3e43bf65d4f99ebe57c27ad60d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1089155406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1089155409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089155408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787cbd622ea802b4a9870ab7826ae836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 297987637947319245, guid: 024c68c608c33e34e957bb037d3ae133, type: 3}
+  spawnTime: 5
 --- !u!1 &1174187096
 GameObject:
   m_ObjectHideFlags: 0

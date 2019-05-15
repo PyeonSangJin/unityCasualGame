@@ -4,23 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 
-public class CharacterStatus : MonoBehaviourPun//, IPunObservable
+public class CharacterStatus : MonoBehaviourPun
 {
     public const float maxHealth = 100f;
-    public float health = 50f;
+    public float health = 100f;
     public Slider hpBar;
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(health);
-        }
-        else
-        {
-            health = (float)stream.ReceiveNext();
-        }
-    }
 
     void FixedUpdate()
     {
@@ -37,9 +26,7 @@ public class CharacterStatus : MonoBehaviourPun//, IPunObservable
     {
         hpBar.value = currentHealth / maxHealth;
     }
-
-
-    //deltatime 하면 이상해짐
+    
     [PunRPC]
     public void TakeDamage(int amount)
     {

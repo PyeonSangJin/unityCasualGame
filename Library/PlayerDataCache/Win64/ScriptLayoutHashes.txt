@@ -110,6 +110,7 @@ abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.Tou
 267e1e00a8f1d106bd614339db235595 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.PunCockpit
 57068c697717dd51af9abb23157cd794 Assembly-CSharp.dll:Photon.Realtime.Demo.ConnectAndJoinRandomLb
 ea84a8c53f823326044a999315931eee Assembly-CSharp.dll:.ItemSpawn
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.NetworkMove
 ba160f8fe96116c81151a9a24d7d9f4f Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.RoomListCell
 c87a2744a4fec8052f557862b102c4e4 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.FriendListCell
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:Photon.Pun.Demo.Procedural.IngameControlPanel
@@ -308,4 +309,4 @@ c8283c7732e3b6aa70d28f1fed4430ca PhotonUnityNetworking.Utilities.dll:Photon.Pun.
 f07d654754d37f82934d9057c671e9cc Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.Forms.UserIdUiForm
 c656dcc13ae391b68d594cc8f9c590b0 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.CountOfRoomsProperty
 f0c4eb24258257daca58a9939f0894d2 Assembly-CSharp.dll:Photon.Pun.Demo.Asteroids.LobbyTopPanel
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.NetworkMove
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.NetworkStatus

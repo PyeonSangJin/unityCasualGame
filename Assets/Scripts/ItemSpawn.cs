@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Photon.Pun;
 
-public class ItemSpawn : MonoBehaviourPun
+public class ItemSpawn : MonoBehaviourPunCallbacks
 {
     private GameObject item;
-    public float spawnTime = 5f;
-
-    double[,,] mappos = new double[22, 12, 2];
-    int[,] map = {
+    private bool isin = true;
+    private double[,,] mappos = new double[22, 12, 2];
+    private int[,] map = {
           {2,2,2,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0 },
           {2,2,2,2,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0 },
           {2,2,1,2,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,0,0 },
@@ -24,8 +23,7 @@ public class ItemSpawn : MonoBehaviourPun
           {0,0,0,0,0,0,1,1,1,1,0,0,0,1,1,2,2,2,2,2,2,2 },
           {0,0,0,0,0,1,1,1,1,0,0,0,0,1,1,2,2,1,1,1,1,2 }
    };
-    private bool isin = true;
-
+    public float spawnTime = 5f;
 
     public void cal()
     {
@@ -48,11 +46,6 @@ public class ItemSpawn : MonoBehaviourPun
     void Update()
     {
         if (!PhotonNetwork.IsMasterClient) return;
-        CmdItemSpawn();
-    }
-
-    void CmdItemSpawn()
-    {
         int x = Random.Range(0, 22);
         int y = Random.Range(0, 12);
 
@@ -68,11 +61,9 @@ public class ItemSpawn : MonoBehaviourPun
 
     IEnumerator SpawnCoroutine(int x, int y)
     {
-        Vector3 vector3 = new Vector3((float)mappos[x, y, 0], (float)mappos[x, y, 1], 0);
-
-        //GameObject spawnCube = PhotonNetwork.Instantiate(item.name, vector3, Quaternion.identity);
-        PhotonNetwork.Instantiate(item.name, vector3, Quaternion.identity, 0);
-
+        Vector3 vector = new Vector3((float)mappos[x, y, 0], (float)mappos[x, y, 1], 0);
+        
+        PhotonNetwork.Instantiate(this.item.name, vector, Quaternion.identity, 0);
 
         yield return new WaitForSeconds(spawnTime);
         isin = true;
