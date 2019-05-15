@@ -9,6 +9,8 @@ public class NetworkMove : MonoBehaviourPun, IPunObservable
     Vector3 realPosition = Vector3.zero;
     Quaternion realRotation = Quaternion.identity;
 
+    private GameObject canvus;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -43,6 +45,9 @@ public class NetworkMove : MonoBehaviourPun, IPunObservable
         else {
             transform.position = Vector3.Lerp(transform.position, realPosition, 0.1f);
             transform.rotation = Quaternion.Lerp(transform.rotation, realRotation, 0.1f);
+            gameObject.GetComponent<SpriteRenderer>().material.color = new Color(0, 0, 0,0);
+            canvus = transform.FindChild("Canvas").gameObject;
+            canvus.SetActive(false);
         }
     }
 }

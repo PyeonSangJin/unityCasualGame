@@ -10,6 +10,7 @@ public class ItemTrigger : MonoBehaviourPun
 
     void OnTriggerEnter2D(Collider2D Item)
     {
+        Debug.Log("inininasdfasdfasdfsafadfasdfasdf");
         if (Item.CompareTag("white") && faraway != Item.GetInstanceID())
         {
             faraway = Item.GetInstanceID();
@@ -21,7 +22,8 @@ public class ItemTrigger : MonoBehaviourPun
     
     void CmdDestroyItem(GameObject item)
     {
-        photonView.RPC("destroy", RpcTarget.All, null);
+        PhotonNetwork.Destroy(item);
+        //photonView.RPC("destroy", RpcTarget.All, null);
 
         if (!PhotonNetwork.IsMasterClient) return;
 
