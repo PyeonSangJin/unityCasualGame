@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using System;
 
 public class Character : MonoBehaviourPun
 {
@@ -27,15 +28,23 @@ public class Character : MonoBehaviourPun
     private BoxCollider2D boxCollider;
     public LayerMask layerMask;
 
+    protected Joystick joystick;
+    protected joybutton joybutton;
+
     void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+
+        joystick = FindObjectOfType<Joystick>();
+        joybutton = FindObjectOfType<joybutton>();
     }
 
     //함수 실해하다 호출하면 다중처리되는것처럼 진행
-    IEnumerator MoveCoroutine() {
-        while (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) {
+    IEnumerator MoveCoroutine()
+    {
+        while (joystick.Horizontal != 0 || joystick.Vertical != 0)
+        {
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -47,8 +56,14 @@ public class Character : MonoBehaviourPun
                 applyRunSpeed = 0;
                 applyRunFlag = false;
             }
-            
-            vector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), transform.position.z);
+
+            float vert = joystick.Vertical;
+            float hori = joystick.Horizontal;
+
+            if (Math.Abs(hori) < Math.Abs(vert)) hori = 0;
+            else vert = 0;
+
+            vector.Set(hori, vert, transform.position.z);
 
             if (vector.x != 0) vector.y = 0;
 
@@ -64,7 +79,7 @@ public class Character : MonoBehaviourPun
             hit = Physics2D.Linecast(start, end, layerMask);
             boxCollider.enabled = true;
 
-            if (hit.transform != null) break; 
+            if (hit.transform != null) break;
 
             animator.SetBool("Walking", true);
 
@@ -94,13 +109,15 @@ public class Character : MonoBehaviourPun
 
     void Update()
     {
+        Debug.Log(joystick.Horizontal);
         if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
         {
             return;
         }
 
-        if (canMove) {
-            if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        if (canMove)
+        {
+            if (joystick.Horizontal != 0 || joystick.Vertical != 0)
             {
                 canMove = false;
                 StartCoroutine(MoveCoroutine());

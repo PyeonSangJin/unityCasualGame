@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - white
+  - Bullet
+  - kei
   layers:
   - Default
   - TransparentFX

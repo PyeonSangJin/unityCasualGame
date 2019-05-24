@@ -46,7 +46,7 @@ public class NetworkMove : MonoBehaviourPun, IPunObservable
             transform.position = Vector3.Lerp(transform.position, realPosition, 0.1f);
             transform.rotation = Quaternion.Lerp(transform.rotation, realRotation, 0.1f);
             gameObject.GetComponent<SpriteRenderer>().material.color = new Color(0, 0, 0,0);
-            canvus = transform.FindChild("Canvas").gameObject;
+            canvus = transform.Find("Canvas").gameObject;
             canvus.SetActive(false);
         }
     }
