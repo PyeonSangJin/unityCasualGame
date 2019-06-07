@@ -10,7 +10,6 @@ public class ItemTrigger : MonoBehaviourPun
 
     void OnTriggerEnter2D(Collider2D Item)
     {
-        Debug.Log("inininasdfasdfasdfsafadfasdfasdf");
         if (Item.CompareTag("white") && faraway != Item.GetInstanceID())
         {
             faraway = Item.GetInstanceID();

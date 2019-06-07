@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2707900781835159033}
   - component: {fileID: 2707900781835159032}
   - component: {fileID: 7146555898284338767}
+  - component: {fileID: 8139757026963976112}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -191,6 +192,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 7146555898284338767}
+  - {fileID: 8139757026963976112}
   viewIdField: 0
   InstantiationId: 1
   isRuntimeInstantiated: 0
@@ -230,6 +232,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5896fc92be528524186b103819757981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8139757026963976112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707900781835158976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b2f3eae83258841a710d1060deadee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5927628080454929357
@@ -338,25 +352,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6280758151916039234}
     m_Modifications:
-    - target: {fileID: 1803339922505141326, guid: 5f9fb6c400d53074a9b10edcec707678,
-        type: 3}
-      propertyPath: m_Name
-      value: Slider
-      objectReference: {fileID: 0}
     - target: {fileID: 1803339922505141323, guid: 5f9fb6c400d53074a9b10edcec707678,
         type: 3}
       propertyPath: m_Value
       value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1803339922526056974, guid: 5f9fb6c400d53074a9b10edcec707678,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1803339922526056974, guid: 5f9fb6c400d53074a9b10edcec707678,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1803339922505141321, guid: 5f9fb6c400d53074a9b10edcec707678,
         type: 3}
@@ -472,6 +471,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803339922505141326, guid: 5f9fb6c400d53074a9b10edcec707678,
+        type: 3}
+      propertyPath: m_Name
+      value: Slider
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803339922526056974, guid: 5f9fb6c400d53074a9b10edcec707678,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803339922526056974, guid: 5f9fb6c400d53074a9b10edcec707678,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f9fb6c400d53074a9b10edcec707678, type: 3}

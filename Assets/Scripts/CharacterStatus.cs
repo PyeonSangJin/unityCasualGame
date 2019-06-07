@@ -10,7 +10,6 @@ public class CharacterStatus : MonoBehaviourPun
     public float health = 100f;
     public Slider hpBar;
 
-
     void FixedUpdate()
     {
         OnChangeHealth(health);

@@ -41,5 +41,6 @@ MonoBehaviour:
   - networkDestory
   - spawn
   - destroy
+  - gameOver
   DisableAutoOpenWizard: 1
   ShowSettings: 0

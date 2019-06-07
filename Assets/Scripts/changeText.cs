@@ -12,8 +12,7 @@ public class changeText : MonoBehaviour
     {
         text.GetComponent<Text>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         text.text = (hpBar.value * 100).ToString() + "%";

@@ -14,7 +14,6 @@ public class Character : MonoBehaviourPun
     private float applyRunSpeed;
     private bool applyRunFlag;
 
-
     //타일단위
     public int walkCount;
     private int currentWalkCount;
@@ -45,7 +44,6 @@ public class Character : MonoBehaviourPun
     {
         while (joystick.Horizontal != 0 || joystick.Vertical != 0)
         {
-
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 applyRunSpeed = runSpeed;
@@ -99,8 +97,6 @@ public class Character : MonoBehaviourPun
                 yield return new WaitForSeconds(0.01f); //1초동안 대기
             }
             currentWalkCount = 0;
-
-
         }
         animator.SetBool("Walking", false);
         canMove = true;

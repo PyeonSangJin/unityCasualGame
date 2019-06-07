@@ -5,16 +5,10 @@ using Photon.Pun;
 
 public class NetworkMove : MonoBehaviourPun, IPunObservable
 {
-    private Animator animator;
-    Vector3 realPosition = Vector3.zero;
-    Quaternion realRotation = Quaternion.identity;
+    private Vector3 currPos = Vector3.zero;
+    private Quaternion currRot = Quaternion.identity;
 
     private GameObject canvus;
-
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -22,29 +16,23 @@ public class NetworkMove : MonoBehaviourPun, IPunObservable
         {
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
-            stream.SendNext(animator.GetFloat("DirX"));
-            stream.SendNext(animator.GetFloat("DirX"));
-            stream.SendNext(animator.GetBool("Walking"));
         }
         else
         {
-            realPosition = (Vector3)stream.ReceiveNext();
-            realRotation = (Quaternion)stream.ReceiveNext();
-            animator.SetFloat("DirX", (float)stream.ReceiveNext());
-            animator.SetFloat("DirY", (float)stream.ReceiveNext());
-            animator.SetBool("Walking", (bool)stream.ReceiveNext());
+            currPos = (Vector3)stream.ReceiveNext();
+            currRot = (Quaternion)stream.ReceiveNext();
         }
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (photonView.IsMine)
         {
         }
         else {
-            transform.position = Vector3.Lerp(transform.position, realPosition, 0.1f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, realRotation, 0.1f);
+            transform.position = Vector3.Lerp(transform.position, currPos, 0.1f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, currRot, 0.1f);
+
             gameObject.GetComponent<SpriteRenderer>().material.color = new Color(0, 0, 0,0);
             canvus = transform.Find("Canvas").gameObject;
             canvus.SetActive(false);
